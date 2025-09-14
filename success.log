@@ -1,0 +1,306 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:2
+load:0x3fce2810,len:0x15a0
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xd24
+load:0x403cb700,len:0x2f04
+entry 0x403c8928
+I (30) boot: ESP-IDF v5.4.1-426-g3ad36321ea 2nd stage bootloader
+I (30) boot: compile time Apr 24 2025 15:55:11
+I (30) boot: Multicore bootloader
+I (32) boot: chip revision: v0.2
+I (34) boot: efuse block revision: v1.3
+I (38) boot.esp32s3: Boot SPI Speed : 40MHz
+I (42) boot.esp32s3: SPI Mode       : DIO
+I (46) boot.esp32s3: SPI Flash Size : 16MB
+I (49) boot: Enabling RNG early entropy source...
+I (54) boot: Partition Table:
+I (57) boot: ## Label            Usage          Type ST Offset   Length
+I (63) boot:  0 nvs              WiFi data        01 02 00009000 00200000
+I (69) boot:  1 phy_init         RF data          01 01 00209000 00001000
+I (76) boot:  2 factory          factory app      00 00 00210000 00500000
+I (82) boot:  3 model            Unknown data     01 82 00710000 00300000
+I (89) boot: End of partition table
+
+I (92) esp_image: segment 0: paddr=00210020 vaddr=3c180020 size=c7bf4h (818164) map
+I (300) esp_image: segment 1: paddr=002d7c1c vaddr=3fca0900 size=083fch ( 33788) load
+I (310) esp_image: segment 2: paddr=002e0020 vaddr=42000020 size=17b544h (1553732) map
+I (691) esp_image: segment 3: paddr=0045b56c vaddr=3fca8cfc size=00c34h (  3124) load
+I (692) esp_image: segment 4: paddr=0045c1a8 vaddr=40374000 size=1c87ch (116860) load
+I (728) esp_image: segment 5: paddr=00478a2c vaddr=600fe100 size=0001ch (    28) load
+I (740) boot: Loaded app from partition at offset 0x210000
+I (740) boot: Disabling RNG early entropy source...
+I (751) octal_psram: vendor id    : 0x0d (AP)
+I (751) octal_psram: dev id       : 0x02 (generation 3)
+I (751) octal_psram: density      : 0x03 (64 Mbit)
+I (753) octal_psram: good-die     : 0x01 (Pass)
+I (757) octal_psram: Latency      : 0x01 (Fixed)
+I (762) octal_psram: VCC          : 0x01 (3V)
+I (766) octal_psram: SRF          : 0x01 (Fast Refresh)
+I (771) octal_psram: BurstType    : 0x01 (Hybrid Wrap)
+I (776) octal_psram: BurstLen     : 0x01 (32 Byte)
+I (780) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)
+I (785) octal_psram: DriveStrength: 0x00 (1/1)
+I (790) MSPI Timing: PSRAM timing tuning index: 5
+I (794) esp_psram: Found 8MB PSRAM device
+I (798) esp_psram: Speed: 80MHz
+I (801) cpu_start: Multicore app
+I (1226) esp_psram: SPI SRAM memory test OK
+I (1235) cpu_start: Pro cpu start user code
+I (1235) cpu_start: cpu freq: 240000000 Hz
+I (1236) app_init: Application information:
+I (1236) app_init: Project name:     libespidf
+I (1240) app_init: App version:      95528ca-dirty
+I (1245) app_init: Compile time:     Sep 14 2025 21:52:54
+I (1250) app_init: ELF file SHA256:  000000000...
+I (1254) app_init: ESP-IDF:          v5.4.1
+I (1258) efuse_init: Min chip rev:     v0.0
+I (1262) efuse_init: Max chip rev:     v0.99 
+
+I (1266) efuse_init: Chip rev:         v0.2
+I (1270) heap_init: Initializing. RAM available for dynamic allocation:
+I (1276) heap_init: At 3FCAB2E0 len 0003E430 (249 KiB): RAM
+I (1282) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (1287) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (1292) heap_init: At 600FE11C len 00001ECC (7 KiB): RTCRAM
+I (1298) esp_psram: Adding pool of 8172K of PSRAM memory to heap allocator
+I (1305) spi_flash: detected chip: boya
+I (1308) spi_flash: flash io: dio
+W (1311) timer_group: legacy driver is deprecated, please migrate to `driver/gptimer.h`
+I (1319) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1325) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1332) coexist: coex firmware version: e727207
+I (1348) coexist: coexist rom version e7ae62f
+I (1348) main_task: Started on CPU0
+I (1349) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1352) main_task: Calling app_main()
+I (1405) echokit: Free SPIRAM heap size: 8319168
+I (1406) echokit: Free INTERNAL heap size: 262619
+I (1406) echokit::ui: Install panel IO
+I (1407) gpio: GPIO[40]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (1415) echokit::ui: Install LCD driver
+I (1419) gpio: GPIO[45]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (1427) echokit::ui: Reset LCD panel
+I (1550) echokit: Free SPIRAM heap size: 8317960
+I (1550) echokit: Free INTERNAL heap size: 260711
+I (1581) echokit: SSID: Some("abcdefgh")
+I (1582) echokit: PASS: Some("12345678")
+I (1582) echokit: Server URL: Some("ws://test.test.test/ws/")
+I (1584) echokit: Free SPIRAM heap size: 7269380
+I (1589) echokit: Free INTERNAL heap size: 260711
+
+I (4779) gpio: GPIO[0]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+I (4882) echokit: Free SPIRAM heap size: 5206152
+I (4882) echokit: Free INTERNAL heap size: 144655
+I (4909) pp: pp rom version: e7ae62f
+I (4909) net80211: net80211 rom version: e7ae62f
+I (4911) wifi:wifi driver task: 3fcd2aec, prio:23, stack:6656, core=0
+I (4912) wifi:wifi firmware version: 79fa3f41ba
+I (4916) wifi:wifi certification version: v7.0
+I (4920) wifi:config NVS flash: disabled
+I (4924) wifi:config nano formatting: disabled
+I (4928) wifi:Init data frame dynamic rx buffer num: 32
+I (4933) wifi:Init static rx mgmt buffer num: 5
+I (4937) wifi:Init management short buffer num: 32
+I (4941) wifi:Init dynamic tx buffer num: 32
+I (4946) wifi:Init static tx FG buffer num: 2
+I (4950) wifi:Init static rx buffer size: 1600
+I (4954) wifi:Init static rx buffer num: 10
+I (4958) wifi:Init dynamic rx buffer num: 32
+I (4962) wifi_init: rx ba win: 6
+
+I (4965) wifi_init: accept mbox: 6
+I (4968) wifi_init: tcpip mbox: 32
+I (4971) wifi_init: udp mbox: 6
+I (4974) wifi_init: tcp mbox: 6
+I (4977) wifi_init: tcp tx win: 5760
+I (4980) wifi_init: tcp rx win: 5760
+I (4983) wifi_init: tcp mss: 1440
+I (4986) wifi_init: WiFi IRAM OP enabled
+I (4990) wifi_init: WiFi RX IRAM OP enabled
+I (4997) phy_init: phy_version 700,8582a7fd,Feb 10 2025,20:13:11
+I (5033) wifi:mode : sta (80:b5:4e:df:35:3c)
+I (5033) wifi:enable tsf
+I (5036) echokit::network: Connecting wifi...
+I (7758) wifi:new:<1,1>, old:<1,0>, ap:<255,255>, sta:<1,1>, prof:1, snd_ch_cfg:0x0
+I (7760) wifi:state: init -> auth (0xb0)
+I (7777) wifi:state: auth -> assoc (0x0)
+I (7782) wifi:state: assoc -> run (0x10)
+I (7986) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:1(originator)
+I (7987) wifi:[ADDBA]RX DELBA, reason:39, delete tid:0, initiator:0(recipient)
+
+I (7989) wifi:[ADDBA]RX DELBA, reason:39, delete tid:3, initiator:1(originator)
+I (8005) wifi:connected with ziroom-29D, aid = 3, channel 1, 40U, bssid = d0:76:e7:74:f8:59
+I (8005) wifi:security: WPA2-PSK, phy: bgn, rssi: -53
+I (8009) wifi:pm start, type: 1
+
+I (8012) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (8020) wifi:set rx beacon pti, rx_bcn_pti: 14, bcn_timeout: 25000, mt_pti: 14, mt_time: 10000
+I (8029) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+I (8037) echokit::network: Waiting for DHCP lease...
+I (8052) wifi:<ba-add>idx:0 (ifx:0, d0:76:e7:74:f8:59), tid:0, ssn:63, winSize:64
+I (9060) esp_netif_handlers: sta ip: 192.168.0.101, mask: 255.255.255.0, gw: 192.168.0.1
+I (9061) echokit::network: Wifi DHCP info: IpInfo { ip: 192.168.0.101, subnet: Subnet { gateway: 192.168.0.1, mask: Mask(24) }, dns: Some(202.96.134.133), secondary_dns: Some(202.96.128.166) }
+I (9074) echokit: Free SPIRAM heap size: 5194728
+I (9078) echokit: Free INTERNAL heap size: 109615
+
+I (9109) echokit: Free SPIRAM heap size: 5193624
+I (9109) echokit: Free INTERNAL heap size: 109615
+I (9536) esp_idf_hal::interrupt::asynch: IsrReactor "IsrReactor" started.
+I (9537) MODEL_LOADER: The storage free size is 22208 KB
+I (9537) MODEL_LOADER: The partition size is 3072 KB
+I (9542) MODEL_LOADER: Successfully load srmodels
+I (9546) AFE_CONFIG: Set Noise Suppression Model: nsnet2
+I (9551) AFE_CONFIG: Set VAD Model: vadnet1_medium
+I (9556) AFE_CONFIG: Set WakeNet Model: wn9_hilili_tts
+I (9561) echokit::audio: afe_config_t { aec_init: false, aec_mode: 0, aec_filter_length: 4, se_init: false, ns_init: true, ns_model_name: 0x3fcdb190, afe_ns_mode: 1, vad_init: true, vad_mode: 1, vad_model_name: 0x3c55ca00, vad_min_speech_ms: 128, vad_min_noise_ms: 500, vad_delay_ms: 128, vad_mute_playback: false, vad_enable_channel_trigger: false, wakenet_init: true, wakenet_model_name: 0x3c55cda0, wakenet_model_name_2: 0x0, wakenet_mode: 0, agc_init: true, agc_mode: 0, agc_compression_gain_db: 9, agc_target_level_dbfs: 3, pcm_config: afe_pcm_config_t { total_ch_num: 1, mic_num: 1, mic_ids: 0x3fcdb1c4, ref_num: 0, ref_ids: 0x0, sample_rate: 16000 }, afe_mode: 1, afe_type: 1, afe_perferred_core: 0, afe_perferred_priority: 5, afe_ringbuf_size: 25, memory_alloc_mode: 3, afe_linear_gain: 1.0, debug_init: false, fixed_first_channel: false }
+I (9634) echokit::audio: afe ringbuf size: 25
+W (9638) AFE_CONFIG: wakenet is activated, disable WebRTC AGC.
+MC Quantized vadnet1:vadnet1_mediumv1_Speech_1_0.5_0.1, min speech:128 ms, min noise:480 ms, mode:1, threshold:0.400, channel:1, tigger:v1 (May 16 2025 16:07:42)
+MC Quantized wakenet9: wakenet9l_tts1h8_Hi,Lily or Hi,莉莉_3_0.633_0.639, tigger:v4, mode:0, p:0, (May 16 2025 16:07:41)
+I (9802) AFE: AFE Version: (1MIC_V250121)
+I (9805) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000
+I (9814) AFE: AFE Pipeline: [input] -> |NS(nsnet2)| -> |VAD(vadnet1_medium)| -> |WakeNet(wn9_hilili_tts,)| -> |AGC(WakeNet)| -> [output]
+I (9826) echokit::audio: audio chunksize: 512
+wakenet9l_tts1h8_Hi,Lily or Hi,莉莉_3_0.633_0.639 set threshold for 1 word: 0.400000
+W (9837) AFE: WakeNet 2 is not initialized!
+
+W (10042) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10242) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (10442) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (10548) echokit::audio: Playing hello audio, waiting for response...
+I (35548) echokit::audio: Speech ended
+I (35573) echokit::app: Received MicAudioEnd
+I (39329) echokit::audio: !!!!!! wakeup detected, afe_fetch_result_t { data: 0x3c708420, data_size: 1024, vad_cache: 0x3c762d30, vad_cache_size: 0, data_volume: 0.0, wakeup_state: 1, wake_word_index: 1, wakenet_model_index: 1, vad_state: 1, trigger_channel_id: 0, wake_word_length: 0, ret_value: 0, raw_data: 0x3c708420, raw_data_channels: 1, ringbuff_free_pct: 1.0, reserved: 0x0 }
+I (39352) echokit::audio: WakeUp
+
+I (39379) echokit::app: Received WakeUp
+I (39379) echokit::app: Received WakeUp
+I (39380) echokit::app: Waiting for hello response
+I (39642) echokit::audio: Received hello
+W (39738) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (39938) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (40138) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (40326) echokit::app: Hello response received
+I (40792) echokit::audio: Speech ended
+I (40816) echokit::app: Received MicAudioEnd
+I (44908) echokit::audio: Speech ended
+I (44932) echokit::app: Received MicAudioEnd
+I (45927) echokit::app: Received message: ServerEvent(ASR { text: "你是谁？" })
+I (45928) echokit::app: Received ASR: "你是谁？"
+I (46933) echokit::app: Received message: ServerEvent(StartAudio { text: "啊！被问到这么重要的问题了呢！*开心地转了个圈*\n" })
+I (46936) echokit::app: Received audio start: "啊！被问到这么重要的问题了呢！*开心地转了个圈*\n"
+I (47570) echokit::app: Received AudioChunk
+I (47570) echokit::app: Received audio chunk
+I (47637) echokit::app: Received AudioChunk
+I (47637) echokit::app: Received audio chunk
+I (47663) echokit::audio: Received start
+I (47664) echokit::audio: Received audio chunk
+I (47685) echokit::app: Received AudioChunk
+I (47685) echokit::app: Received audio chunk
+I (47731) echokit::app: Received AudioChunk
+I (47732) echokit::app: Received audio chunk
+I (47756) echokit::app: Received AudioChunk
+I (47756) echokit::app: Received audio chunk
+W (47761) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (47843) echokit::app: Received AudioChunk
+I (47843) echokit::app: Received audio chunk
+I (47845) echokit::audio: Received audio chunk
+I (47897) echokit::app: Received AudioChunk
+I (47898) echokit::app: Received audio chunk
+I (47921) echokit::app: Received AudioChunk
+I (47921) echokit::app: Received audio chunk
+W (47961) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48019) echokit::audio: Received audio chunk
+I (48125) echokit::app: Received AudioChunk
+I (48125) echokit::app: Received audio chunk
+W (48161) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48178) echokit::app: Received AudioChunk
+I (48179) echokit::app: Received audio chunk
+I (48196) echokit::app: Received AudioChunk
+I (48197) echokit::app: Received audio chunk
+I (48254) echokit::app: Received AudioChunk
+I (48254) echokit::app: Received audio chunk
+I (48259) echokit::audio: Received audio chunk
+W (48361) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48381) echokit::app: Received AudioChunk
+I (48381) echokit::app: Received audio chunk
+I (48401) echokit::app: Received AudioChunk
+I (48402) echokit::app: Received audio chunk
+I (48484) echokit::app: Received AudioChunk
+I (48485) echokit::app: Received audio chunk
+I (48507) echokit::app: Received AudioChunk
+I (48507) echokit::app: Received audio chunk
+I (48514) echokit::audio: Received audio chunk
+I (48528) echokit::app: Received AudioChunk
+I (48528) echokit::app: Received audio chunk
+W (48561) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48589) echokit::audio: Received audio chunk
+I (48608) echokit::app: Received AudioChunk
+I (48608) echokit::app: Received audio chunk
+I (48652) echokit::app: Received AudioChunk
+I (48652) echokit::app: Received audio chunk
+I (48674) echokit::app: Received AudioChunk
+I (48675) echokit::app: Received audio chunk
+W (48761) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48844) echokit::audio: Received audio chunk
+I (48915) echokit::app: Received AudioChunk
+I (48916) echokit::app: Received audio chunk
+I (48955) echokit::app: Received AudioChunk
+I (48955) echokit::app: Received audio chunk
+W (48961) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (48976) echokit::app: Received AudioChunk
+I (48976) echokit::app: Received audio chunk
+I (49018) echokit::app: Received AudioChunk
+I (49019) echokit::app: Received audio chunk
+I (49042) echokit::app: Received AudioChunk
+I (49042) echokit::app: Received audio chunk
+I (49043) echokit::app: Received message: ServerEvent(EndAudio)
+I (49045) echokit::app: Received audio end
+I (49049) echokit::app: Audio speed: 0.41x
+I (49099) echokit::audio: Received audio chunk
+W (49161) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (49189) echokit::audio: Received audio chunk
+W (49361) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (49444) echokit::audio: Received audio chunk
+W (49561) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (49699) echokit::audio: Received audio chunk
+W (49761) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (49789) echokit::audio: Received audio chunk
+W (49961) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (50044) echokit::audio: Received audio chunk
+W (50161) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (50299) echokit::audio: Received audio chunk
+W (50361) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (50389) echokit::audio: Received audio chunk
+W (50561) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (50644) echokit::audio: Received audio chunk
+W (50761) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (50899) echokit::audio: Received audio chunk
+W (50961) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (50989) echokit::audio: Received audio chunk
+W (51161) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (51244) echokit::audio: Received audio chunk
+W (51361) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (51499) echokit::audio: Received audio chunk
+W (51561) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (51589) echokit::audio: Received audio chunk
+W (51761) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (51844) echokit::audio: Received audio chunk
+W (51961) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (52099) echokit::audio: Received audio chunk
+W (52161) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (52339) echokit::audio: Received audio chunk
+W (52361) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+W (52561) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (52594) echokit::audio: Received audio chunk
+I (52714) echokit::audio: Received end
+W (52761) AFE: Ringbuffer of AFE is empty, Please use feed() to write data
+I (52774) echokit::app: Received message: ServerEvent(StartAudio { text: "\n我是橘雪莉，超级无敌可爱的小侦探！" })
+I (52776) echokit::app: Received audio start: "\n我是橘雪莉，超级无敌可爱的小侦探！"
+I (52909) echokit::app: Received AudioChunk
+I (52909) echokit::app: Received audio chunk
+I (52933) echokit::app: Received AudioChunk

@@ -13,6 +13,7 @@ pub enum Event {
     ServerEvent(ServerEvent),
     MicAudioChunk(Vec<u8>),
     MicAudioEnd,
+    WakeUp,
 }
 
 #[allow(dead_code)]
@@ -45,6 +46,9 @@ async fn select_evt(evt_rx: &mut mpsc::Receiver<Event>, server: &mut Server) -> 
                 },
                 Event::ServerEvent(_)=>{
                     log::info!("Received ServerEvent: {:?}", evt);
+                },
+                Event::WakeUp=>{
+                    log::info!("Received WakeUp");
                 },
             }
             Some(evt)
@@ -146,6 +150,24 @@ pub async fn main_work<'d>(
 
     while let Some(evt) = select_evt(&mut evt_rx, &mut server).await {
         match evt {
+            Event::WakeUp=>{
+                log::info!("Received WakeUp");
+                if state != State::Idle {
+                    log::warn!("Received WakeUp while not idle");
+                    continue;
+                }
+                let (tx, rx) = tokio::sync::oneshot::channel();
+                player_tx
+                    .send(AudioData::Hello(tx))
+                    .map_err(|e| anyhow::anyhow!("Error sending hello: {e:?}"))?;
+                log::info!("Waiting for hello response");
+                let _ = rx.await;
+                log::info!("Hello response received");
+
+                state = State::Listening;
+                gui.state = "Listening...".to_string();
+                gui.display_flush().unwrap();
+            },
             Event::Event(Event::GAIA | Event::K0) => {
                 log::info!("Received event: gaia");
                 // gui.state = "gaia".to_string();

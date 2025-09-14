@@ -29,6 +29,9 @@ unsafe fn afe_init() -> (
     afe_config.vad_mode = esp_sr::vad_mode_t_VAD_MODE_1;
     afe_config.agc_init = true;
 
+    // wakenet enable
+    afe_config.wakenet_init = true;
+
     log::info!("{afe_config:?}");
 
     let afe_ringbuf_size = afe_config.afe_ringbuf_size;
@@ -39,6 +42,10 @@ unsafe fn afe_init() -> (
     let afe_data = (afe_handle.create_from_config.unwrap())(afe_config);
     let audio_chunksize = (afe_handle.get_feed_chunksize.unwrap())(afe_data);
     log::info!("audio chunksize: {}", audio_chunksize);
+
+    // set wakenet threshold
+    (afe_handle.set_wakenet_threshold.unwrap())(afe_data, 1, 0.2);
+    (afe_handle.set_wakenet_threshold.unwrap())(afe_data, 2, 0.2);
 
     esp_sr::afe_config_free(afe_config);
     (afe_handle, afe_data)
@@ -57,6 +64,7 @@ unsafe impl Sync for AFE {}
 struct AFEResult {
     data: Vec<u8>,
     speech: bool,
+    is_wakeup: bool,
 }
 
 impl AFE {
@@ -104,6 +112,11 @@ impl AFE {
                 return Err(result.ret_value);
             }
 
+            let is_wakeup = result.wakeup_state == esp_sr::wakenet_state_t_WAKENET_DETECTED;
+            if result.wakeup_state != 0 {
+                log::info!("!!!!!! wakeup detected, {result:?}");
+            }
+
             let data_size = result.data_size;
             let vad_state = result.vad_state;
             let mut data = Vec::with_capacity(data_size as usize + result.vad_cache_size as usize);
@@ -119,7 +132,7 @@ impl AFE {
             };
 
             let speech = vad_state == esp_sr::vad_state_t_VAD_SPEECH;
-            Ok(AFEResult { data, speech })
+            Ok(AFEResult { data, speech, is_wakeup })
         }
     }
 }
@@ -207,6 +220,10 @@ async fn i2s_player_(
     tx_driver.write_all(&hello_audio, 100 / PORT_TICK_PERIOD_MS)?;
     log::info!("Playing hello audio, waiting for response...");
 
+
+    let feed_chunk = 1024; // audio_chunksize * sizeof(int16_t) * feed_channel
+    let mut feed_buf = Vec::<u8>::with_capacity(feed_chunk * 4);
+
     loop {
         let data = if speaking {
             rx.recv().await
@@ -218,7 +235,16 @@ async fn i2s_player_(
                 _ = async {} => {
                     for _ in 0..10{
                         let n = rx_driver.read(&mut buf, 100 / PORT_TICK_PERIOD_MS)?;
-                        afe_handle.feed(&buf[..n]);
+                        if n > 0 {
+                            feed_buf.extend_from_slice(&buf[..n]);
+                        }
+
+                        while feed_buf.len() >= feed_chunk {
+                            let chunk_bytes = feed_buf
+                                .drain(..feed_chunk)
+                                .collect::<Vec<u8>>();
+                            afe_handle.feed(&chunk_bytes);
+                        }
                     }
                     None
                 }
@@ -417,6 +443,13 @@ fn afe_worker(afe_handle: Arc<AFE>, tx: MicTx) -> anyhow::Result<()> {
         }
         let result = result.unwrap();
         if result.data.is_empty() {
+            continue;
+        }
+
+        if result.is_wakeup {
+            log::info!("WakeUp");
+            tx.blocking_send(crate::app::Event::WakeUp)
+                .map_err(|_| anyhow::anyhow!("Failed to send data"))?;
             continue;
         }
 
