@@ -1,9 +1,7 @@
 # 添加了 WakeNet 语音唤醒的 echokit_box
 
 
-
-https://github.com/user-attachments/assets/f91b2ef5-84cf-47c6-839b-e6edb17aacea
-
+https://github.com/user-attachments/assets/d7a4b14d-fd42-4d97-a116-0d9e84673084
 
 
 构建和刷入方法见脚本文件 ```build_and_flash.sh```  
